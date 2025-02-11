@@ -3,28 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>TESTING</h1>
-    <button class="dropdown-button">Menu</button>
-    <div id="dropdown-container" class="dropdown-container" style="display: none;">
-      <div>Profile</div>
-      <div>awefaw</div>
-      <div>Secret Place</div>
-    </div>
-    <button class="dropdown-button">Menu</button>
-    <div id="dropdown-container" class="dropdown-container" style="display: none;">
-      <div>awefaw</div>
-      <div>Settings</div>
-      <div>Secret Place</div>
-    </div>
-    <button class="dropdown-button">Menu</button>
-    <div id="dropdown-container" class="dropdown-container" style="display: none;">
-      <div>Profile</div>
-      <div>Settings</div>
-      <div>Secret Place</div>
-    </div>
+    <form id="weatherForm">
+      <h1>Weather App</h1>
+      <label for="location">Enter Location</label>
+      <input type="text" name="location" id="location" />
+      <div>
+        <input type="submit"/>
+      </div>
+    </form>
+    <script src="main.js"></script>
   </body>
 </html>
