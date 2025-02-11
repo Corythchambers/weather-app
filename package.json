@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
-    "dev": "webpack serve --open --config webpack.dev.js",
+    "dev": "npm install && webpack serve --open --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "npx prettier . --write",
     "eslint": "npx eslint",
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "corythchambers-dropdown-package": "^1.0.0",
     "date-fns": "^4.1.0",
     "prettier": "^3.4.2",

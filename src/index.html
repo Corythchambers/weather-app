@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <form id="weatherForm">
-      <h1>Weather App</h1>
-      <label for="location">Enter Location</label>
-      <input type="text" name="location" id="location" />
-      <div>
-        <input type="submit"/>
+    <form id="weatherForm" class="container mt-5">
+      <h1 class="mb-4">Weather App</h1>
+      <div class="mb-3">
+        <label for="location" class="form-label">Enter Location</label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          class="form-control"
+          placeholder="e.g., San Francisco"
+        />
       </div>
+      <button type="submit" class="btn btn-primary">Get Weather</button>
     </form>
-    <script src="main.js"></script>
   </body>
 </html>

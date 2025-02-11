@@ -1,20 +1,34 @@
-async function getWeatherData(location) {
-    const encodedLocation = encodeURIComponent(location);
-    const request = new Request(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodedLocation}?key=B5XZ3UB3TG4U8DW3ULRGETB95`
-    );
-  
-    const response = await fetch(request);
-    const data = await response.json();
-    console.log(data.currentConditions);
-    //   data.days.forEach((element) => {
-    //     console.log(element);
-    //   });
+import "./style.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { getWeatherData } from "./helpers/getWeatherData";
+import { createWeatherNode } from "./helpers/createWeatherNode";
+
+document.getElementById("weatherForm").onsubmit = async function (event) {
+  event.preventDefault();
+  const location = document.getElementById("location").value;
+  const weatherData = await getWeatherData(location);
+
+  let weatherContainer = document.getElementById("weatherContainer");
+  if (!weatherContainer) {
+    weatherContainer = document.createElement("div");
+    weatherContainer.id = "weatherContainer";
+    weatherContainer.classList.add("container", "mt-4");
+    document.body.appendChild(weatherContainer);
   }
-  
-  document.getElementById("weatherForm").onsubmit = function (event) {
-    event.preventDefault();
-    const location = document.getElementById("location").value;
-    getWeatherData(location);
-  };
-  
+
+  weatherContainer.innerHTML = "";
+
+  const currentWeatherNode = createWeatherNode(weatherData.currentConditions);
+  weatherContainer.appendChild(currentWeatherNode);
+
+  weatherData.days.forEach((day) => {
+    const date = day.dateTime;
+    createWeatherNode(day.currentConditions, date);
+    weatherContainer.appendChild(currentWeatherNode);
+  });
+
+  if (!document.getElementById("weatherContainer")) {
+    document.body.appendChild(weatherContainer);
+  }
+};
