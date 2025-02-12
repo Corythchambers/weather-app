@@ -23,9 +23,8 @@ document.getElementById("weatherForm").onsubmit = async function (event) {
   weatherContainer.appendChild(currentWeatherNode);
 
   weatherData.days.forEach((day) => {
-    const date = day.dateTime;
-    createWeatherNode(day.currentConditions, date);
-    weatherContainer.appendChild(currentWeatherNode);
+    const forecastNode = createWeatherNode(day, day.datetime);
+    weatherContainer.appendChild(forecastNode);
   });
 
   if (!document.getElementById("weatherContainer")) {
